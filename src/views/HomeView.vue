@@ -1,46 +1,33 @@
 <template>
-  <div id="app">
-    <tree-node :node="treeData"></tree-node>
+  <div>
+    <input
+      type="text"
+      v-model="inputData"
+      placeholder="Enter comma-separated codes"
+    />
+    <div v-for="code in processedData" :key="code">
+      <VueQrcode :value="code" :size="128" :width="200" />
+    </div>
   </div>
 </template>
 
 <script>
-import TreeNode from "@/components/Tree.vue";
+import { ref, watch } from "vue";
+import VueQrcode from "vue-qrcode";
 
 export default {
   components: {
-    TreeNode,
+    VueQrcode,
   },
-  data() {
-    return {
-      treeData: {
-        name: "Root",
-        id: 1,
-        children: [
-          {
-            name: "Node 1",
-            id: 2,
-            children: [
-              {
-                name: "Node 1.1",
-                id: 3,
-                children: [],
-              },
-              {
-                name: "Node 1.2",
-                id: 4,
-                children: [],
-              },
-            ],
-          },
-          {
-            name: "Node 2",
-            id: 5,
-            children: [],
-          },
-        ],
-      },
-    };
+  setup() {
+    const inputData = ref("");
+    const processedData = ref([]);
+
+    watch(inputData, (newValue) => {
+      processedData.value = newValue.split(",").map((code) => code.trim());
+    });
+
+    return { inputData, processedData };
   },
 };
 </script>

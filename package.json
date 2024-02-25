@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
-    "@grapoza/vue-tree": "^5.2.0",
     "@headlessui/vue": "^1.7.13",
     "@vuepic/vue-datepicker": "^5.1.0",
     "@vueuse/core": "^10.1.2",
@@ -21,6 +20,7 @@
     "core-js": "^3.8.3",
     "sweetalert2": "^11.6.13",
     "vue": "^3.2.13",
+    "vue-qrcode": "^2.2.2",
     "vue-router": "^4.0.3",
     "vue-search-select": "^3.1.0",
     "vue-sweetalert2": "^5.0.5",
